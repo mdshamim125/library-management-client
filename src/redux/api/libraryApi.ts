@@ -50,7 +50,7 @@ export const libraryApi = createApi({
         method: "POST",
         body,
       }),
-      invalidatesTags: ["borrows"],
+      invalidatesTags: ["borrows", "books"],
     }),
 
     getBorrowSummary: builder.query({

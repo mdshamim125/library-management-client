@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import { EditBookModal } from "../modals/EditBookModal";
 import { useState } from "react";
 import type { Book } from "../interface/Book";
+import { BorrowBookModal } from "../modals/BorrowBookModal";
 
 function BookList() {
   const { data: books, isLoading } = useGetAllBooksQuery(undefined);
@@ -16,6 +17,7 @@ function BookList() {
 
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [selectedBook, setSelectedBook] = useState<Book | null>(null);
+  const [isBorrowModalOpen, setIsBorrowModalOpen] = useState(false);
 
   const openEditModal = (book: Book) => {
     setSelectedBook(book);
@@ -25,6 +27,11 @@ function BookList() {
   const closeEditModal = () => {
     setSelectedBook(null);
     setIsEditModalOpen(false);
+  };
+
+  const openBorrowModal = (book: Book) => {
+    setSelectedBook(book);
+    setIsBorrowModalOpen(true);
   };
 
   const handleDelete = async (id: string) => {
@@ -115,7 +122,7 @@ function BookList() {
                       🗑️ Delete
                     </button>
                     <button
-                      onClick={() => navigate(`/borrow/${book._id}`)}
+                      onClick={() => openBorrowModal(book)}
                       className="px-3 py-1 bg-indigo-500 text-white rounded hover:bg-indigo-600 transition"
                     >
                       🔄 Borrow
@@ -137,6 +144,12 @@ function BookList() {
           }}
         />
       )}
+      {isBorrowModalOpen && selectedBook && (
+  <BorrowBookModal
+    book={selectedBook}
+    onClose={() => setIsBorrowModalOpen(false)}
+  />
+)}
     </div>
   );
 }

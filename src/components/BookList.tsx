@@ -8,6 +8,7 @@ import { EditBookModal } from "../modals/EditBookModal";
 import { useState } from "react";
 import { BorrowBookModal } from "../modals/BorrowBookModal";
 import type { IBook } from "../interface/IBook";
+import Loader from "./Loader";
 
 function BookList() {
   const { data: books, isLoading } = useGetAllBooksQuery(undefined);
@@ -56,7 +57,7 @@ function BookList() {
   };
 
   if (isLoading)
-    return <p className="text-center text-gray-500 py-10">Loading books...</p>;
+    return <Loader/>
 
   const bookList = books?.data || [];
 

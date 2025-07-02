@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 const Footer = () => {
   return (
     <div>
@@ -6,13 +8,12 @@ const Footer = () => {
           <div className="lg:flex">
             <div className="w-full -mx-6 lg:w-2/5">
               <div className="px-6">
-                <a href="#">
-                  <img
-                    className="w-auto h-7"
-                    src="https://merakiui.com/images/full-logo.svg"
-                    alt='meraki ui logo'
-                  />
-                </a>
+                <Link
+                  to="/"
+                  className="text-xl font-bold text-blue-600 dark:text-white"
+                >
+                  📚 Library Management
+                </Link>
                 <p className="max-w-sm mt-2 text-gray-500 dark:text-gray-400">
                   Join 31,000+ other and never miss out on new tips, tutorials,
                   and more.
@@ -139,19 +140,19 @@ const Footer = () => {
                     Contact
                   </h3>
                   <span className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">
-                    +1 526 654 8965
+                    +880 1710-534833
                   </span>
                   <span className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">
-                    example@email.com
+                    cse12005038brur@gmail.com
                   </span>
                 </div>
               </div>
             </div>
           </div>
-          <hr className="h-px my-6 bg-gray-200 border-none dark:bg-gray-700" />
+          <hr className="h-px my-6  bg-gray-200 border-none dark:bg-gray-700" />
           <div>
-            <p className="text-center text-gray-500 dark:text-gray-400">
-              © Brand 2020 - All rights reserved
+            <p className="text-center">
+              © {new Date().getFullYear()} Library System. All rights reserved.
             </p>
           </div>
         </div>

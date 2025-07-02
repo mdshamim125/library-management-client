@@ -64,7 +64,7 @@ function BookList() {
     <div className="p-4 sm:p-6 lg:p-10">
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6">
         <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-4 sm:mb-0">
-          📚 Book Management
+          📚 Book List
         </h2>
         <button
           onClick={() => navigate("/create-book")}

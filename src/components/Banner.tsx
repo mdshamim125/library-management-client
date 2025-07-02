@@ -1,8 +1,8 @@
 // components/Banner.tsx
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/pagination";
+// import "swiper/css";
+// import "swiper/css/pagination";
 
 const bannerImages = [
   {
@@ -10,16 +10,16 @@ const bannerImages = [
     alt: "Classic Books",
     caption: "Explore timeless classics",
   },
-  {
-    src: "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f", // modern bookshelf
-    alt: "Modern Literature",
-    caption: "Dive into modern literature",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1519681393784-d120267933ba", // study desk with books
-    alt: "Study Corner",
-    caption: "Your personal reading space",
-  },
+  // {
+  //   src: "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f", // modern bookshelf
+  //   alt: "Modern Literature",
+  //   caption: "Dive into modern literature",
+  // },
+  // {
+  //   src: "https://images.unsplash.com/photo-1519681393784-d120267933ba", // study desk with books
+  //   alt: "Study Corner",
+  //   caption: "Your personal reading space",
+  // },
 ];
 
 const Banner = () => {
@@ -40,7 +40,7 @@ const Banner = () => {
                 alt={image.alt}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+              <div className="absolute inset-0 bg-black/40 pt-24 md:pt-48">
                 <h2 className="text-white text-xl md:text-3xl font-bold text-center px-4">
                   {image.caption}
                 </h2>

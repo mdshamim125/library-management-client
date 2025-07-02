@@ -55,7 +55,7 @@ export const libraryApi = createApi({
 
     getBorrowSummary: builder.query({
       query: () => "/borrow",
-      providesTags: ["borrows"],
+      providesTags: ["borrows", "books"],
     }),
   }),
 });

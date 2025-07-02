@@ -6,8 +6,8 @@ import {
 import Swal from "sweetalert2";
 import { EditBookModal } from "../modals/EditBookModal";
 import { useState } from "react";
-import type { Book } from "../interface/Book";
 import { BorrowBookModal } from "../modals/BorrowBookModal";
+import type { IBook } from "../interface/IBook";
 
 function BookList() {
   const { data: books, isLoading } = useGetAllBooksQuery(undefined);
@@ -16,10 +16,10 @@ function BookList() {
   const navigate = useNavigate();
 
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-  const [selectedBook, setSelectedBook] = useState<Book | null>(null);
+  const [selectedBook, setSelectedBook] = useState<IBook | null>(null);
   const [isBorrowModalOpen, setIsBorrowModalOpen] = useState(false);
 
-  const openEditModal = (book: Book) => {
+  const openEditModal = (book: IBook) => {
     setSelectedBook(book);
     setIsEditModalOpen(true);
   };
@@ -29,7 +29,7 @@ function BookList() {
     setIsEditModalOpen(false);
   };
 
-  const openBorrowModal = (book: Book) => {
+  const openBorrowModal = (book: IBook) => {
     setSelectedBook(book);
     setIsBorrowModalOpen(true);
   };
@@ -91,7 +91,7 @@ function BookList() {
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-100 text-sm">
-              {bookList.map((book: Book) => (
+              {bookList.map((book: IBook) => (
                 <tr key={book._id} className="hover:bg-gray-50">
                   <td className="px-4 py-3 text-center">{book.title}</td>
                   <td className="px-4 py-3 text-center">{book.author}</td>
@@ -145,11 +145,11 @@ function BookList() {
         />
       )}
       {isBorrowModalOpen && selectedBook && (
-  <BorrowBookModal
-    book={selectedBook}
-    onClose={() => setIsBorrowModalOpen(false)}
-  />
-)}
+        <BorrowBookModal
+          book={selectedBook}
+          onClose={() => setIsBorrowModalOpen(false)}
+        />
+      )}
     </div>
   );
 }

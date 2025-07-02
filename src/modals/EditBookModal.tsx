@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { useUpdateBookMutation } from "../redux/api/libraryApi";
-import type { Book } from "../interface/Book";
+import type { IBook } from "../interface/IBook";
 import Swal from "sweetalert2";
 
-
 interface EditBookModalProps {
-  book: Book;
+  book: IBook;
   onClose: () => void;
   onSaved: () => void;
 }
@@ -17,7 +16,7 @@ export const EditBookModal: React.FC<EditBookModalProps> = ({
 }) => {
   const [title, setTitle] = useState(book.title);
   const [author, setAuthor] = useState(book.author);
-  const [genre, setGenre] = useState<Book["genre"]>(book.genre);
+  const [genre, setGenre] = useState<IBook["genre"]>(book.genre);
   const [isbn] = useState(book.isbn); // assuming ISBN is not editable
   const [description, setDescription] = useState(book.description || "");
   const [copies, setCopies] = useState(book.copies);
@@ -34,40 +33,40 @@ export const EditBookModal: React.FC<EditBookModalProps> = ({
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  const updatedBook = {
-    title,
-    author,
-    genre,
-    isbn,
-    description,
-    copies,
-    available,
+    const updatedBook = {
+      title,
+      author,
+      genre,
+      isbn,
+      description,
+      copies,
+      available,
+    };
+
+    try {
+      await updateBook({ id: book?._id, ...updatedBook }).unwrap();
+
+      Swal.fire({
+        icon: "success",
+        title: "Book updated!",
+        text: "The book information has been successfully updated.",
+        timer: 2000,
+        showConfirmButton: false,
+      });
+
+      onSaved(); // close modal and refresh data
+    } catch (error) {
+      console.error("Failed to update book:", error);
+
+      Swal.fire({
+        icon: "error",
+        title: "Update failed",
+        text: "Something went wrong while updating the book.",
+      });
+    }
   };
-
-  try {
-    await updateBook({ id: book?._id, ...updatedBook }).unwrap();
-
-    Swal.fire({
-      icon: "success",
-      title: "Book updated!",
-      text: "The book information has been successfully updated.",
-      timer: 2000,
-      showConfirmButton: false,
-    });
-
-    onSaved(); // close modal and refresh data
-  } catch (error) {
-    console.error("Failed to update book:", error);
-
-    Swal.fire({
-      icon: "error",
-      title: "Update failed",
-      text: "Something went wrong while updating the book.",
-    });
-  }
-};
 
   return (
     <div
@@ -135,7 +134,7 @@ export const EditBookModal: React.FC<EditBookModalProps> = ({
             <select
               id="genre"
               value={genre}
-              onChange={(e) => setGenre(e.target.value as Book["genre"])}
+              onChange={(e) => setGenre(e.target.value as IBook["genre"])}
               className="block w-full px-4 py-3 mt-1 text-sm text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-blue-300"
               required
             >

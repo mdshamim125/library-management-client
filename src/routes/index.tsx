@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router";
 import AddBook from "../components/AddBook";
-import BorrowSummary from "../components/BorrowSummary";
+import BorrowSummary from "../pages/BorrowSummary";
 import MainLayouts from "../layouts/MainLayouts";
 import AllBooks from "../pages/AllBooks";
 

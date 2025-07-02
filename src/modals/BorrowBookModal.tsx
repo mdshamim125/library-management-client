@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router";
 import { useCreateBorrowMutation } from "../redux/api/libraryApi"; // adjust path
-import type { Book } from "../interface/Book";
+import type { IBook } from "../interface/IBook";
 
 interface BorrowBookModalProps {
-  book: Book;
+  book: IBook;
   onClose: () => void;
 }
 
@@ -57,8 +57,8 @@ export const BorrowBookModal: React.FC<BorrowBookModalProps> = ({
   };
 
   const tomorrow = new Date();
-tomorrow.setDate(tomorrow.getDate() + 1);
-const minDate = tomorrow.toISOString().split("T")[0];
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  const minDate = tomorrow.toISOString().split("T")[0];
 
   return (
     <div
@@ -68,16 +68,29 @@ const minDate = tomorrow.toISOString().split("T")[0];
       aria-modal="true"
     >
       <div className="flex items-end justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
-        <span className="hidden sm:inline-block sm:h-screen sm:align-middle" aria-hidden="true">&#8203;</span>
+        <span
+          className="hidden sm:inline-block sm:h-screen sm:align-middle"
+          aria-hidden="true"
+        >
+          &#8203;
+        </span>
 
         <div className="relative inline-block max-h-[90vh] overflow-y-auto px-4 pt-5 pb-4 text-left align-bottom transition-all transform bg-white rounded-lg shadow-xl dark:bg-gray-900 sm:my-8 sm:w-full sm:max-w-sm sm:p-6 sm:align-middle">
-          <h3 className="text-lg font-medium leading-6 text-gray-800 capitalize dark:text-white" id="modal-title">
+          <h3
+            className="text-lg font-medium leading-6 text-gray-800 capitalize dark:text-white"
+            id="modal-title"
+          >
             Borrow "{book.title}"
           </h3>
 
           <form className="mt-4" onSubmit={handleSubmit}>
             {/* Quantity */}
-            <label htmlFor="quantity" className="block text-sm text-gray-700 dark:text-gray-200">Quantity</label>
+            <label
+              htmlFor="quantity"
+              className="block text-sm text-gray-700 dark:text-gray-200"
+            >
+              Quantity
+            </label>
             <input
               id="quantity"
               type="number"
@@ -90,7 +103,12 @@ const minDate = tomorrow.toISOString().split("T")[0];
             />
 
             {/* Due Date */}
-            <label htmlFor="dueDate" className="block mt-3 text-sm text-gray-700 dark:text-gray-200">Due Date</label>
+            <label
+              htmlFor="dueDate"
+              className="block mt-3 text-sm text-gray-700 dark:text-gray-200"
+            >
+              Due Date
+            </label>
             <input
               id="dueDate"
               type="date"

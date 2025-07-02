@@ -1,4 +1,3 @@
-import Loader from "../components/Loader";
 import type { IBorrowSummary } from "../interface/IBorrowSummary";
 import { useGetBorrowSummaryQuery } from "../redux/api/libraryApi";
 
@@ -16,7 +15,7 @@ const BorrowSummary = () => {
       </div>
 
       {isLoading ? (
-        <div> <Loader/></div>
+        <div className="text-center text-gray-500 py-10">Loading summary...</div>
       ) : error ? (
         <div className="text-center text-red-500 py-10">Failed to load borrow summary.</div>
       ) : summaryList.length === 0 ? (

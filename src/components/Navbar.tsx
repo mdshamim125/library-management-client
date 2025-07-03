@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { FaBook } from "react-icons/fa";
 import { Link } from "react-router";
 
 const Navbar = () => {
@@ -11,9 +12,9 @@ const Navbar = () => {
           <div className="flex items-center justify-between">
             <Link
               to="/"
-              className="text-xl font-bold text-blue-600 dark:text-white"
+              className="text-xl font-bold text-blue-600 dark:text-white flex items-center gap-2"
             >
-              📚 Library Management
+              <FaBook /> Management
             </Link>
             {/* Mobile menu button */}
             <div className="flex lg:hidden">

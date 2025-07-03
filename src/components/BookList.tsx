@@ -8,6 +8,9 @@ import { EditBookModal } from "../modals/EditBookModal";
 import { useState } from "react";
 import { BorrowBookModal } from "../modals/BorrowBookModal";
 import type { IBook } from "../interface/IBook";
+import { FaBook, FaEdit } from 'react-icons/fa';
+import { MdAddBox, MdDelete } from "react-icons/md";
+import { RiTakeawayFill } from "react-icons/ri";
 
 function BookList() {
   const { data: books, isLoading } = useGetAllBooksQuery(undefined);
@@ -63,14 +66,14 @@ function BookList() {
   return (
     <div className="p-4 sm:p-6 lg:p-10">
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6">
-        <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-4 sm:mb-0">
-          📚 Book List
+        <h2 className="text-2xl font-bold text-blue-600 dark:text-white mb-4 sm:mb-0 flex items-center justify-center gap-2">
+          <FaBook />Book List
         </h2>
         <button
           onClick={() => navigate("/create-book")}
-          className="w-full sm:w-auto px-4 py-2 bg-blue-600 text-white font-medium rounded hover:bg-blue-700 transition"
+          className="w-full sm:w-auto px-4 py-2 bg-blue-600 text-white font-medium rounded hover:bg-blue-700 transition flex items-center gap-1 text-lg"
         >
-          ➕ Add New Book
+          <MdAddBox className="text-2xl" /> Add New Book
         </button>
       </div>
 
@@ -112,20 +115,20 @@ function BookList() {
                       onClick={() => openEditModal(book)}
                       className="px-3 py-1 bg-yellow-400 text-white rounded hover:bg-yellow-500 transition"
                     >
-                      ✏️ Edit
+                      <FaEdit title="edit" className="text-lg" />
                     </button>
 
                     <button
                       onClick={() => handleDelete(book._id)}
                       className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition"
                     >
-                      🗑️ Delete
+                      <MdDelete title="delete" className="text-lg" />
                     </button>
                     <button
                       onClick={() => openBorrowModal(book)}
                       className="px-3 py-1 bg-indigo-500 text-white rounded hover:bg-indigo-600 transition"
                     >
-                      🔄 Borrow
+                      <RiTakeawayFill title="borrow" className="text-lg"/>
                     </button>
                   </td>
                 </tr>

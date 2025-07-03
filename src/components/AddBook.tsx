@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 import { useAddBookMutation } from "../redux/api/libraryApi";
 import type { IBook } from "../interface/IBook";
 import Swal from "sweetalert2";
+import { MdAddBox } from "react-icons/md";
 
 const AddBook = () => {
   const {
@@ -41,8 +42,8 @@ const AddBook = () => {
 
   return (
     <div className="max-w-3xl mx-auto p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md">
-      <h2 className="text-3xl font-bold mb-8 text-center text-gray-900 dark:text-white">
-        ➕ Add New Book
+      <h2 className="text-3xl text-blue-600 flex gap-2 items-center justify-center font-bold mb-4 text-center dark:text-white">
+        <MdAddBox className="text-4xl" />  Add New Book
       </h2>
 
       <form onSubmit={handleSubmit(onSubmit)} noValidate>

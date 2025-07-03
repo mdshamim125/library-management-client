@@ -8,6 +8,9 @@ import { EditBookModal } from "../modals/EditBookModal";
 import { useState } from "react";
 import { BorrowBookModal } from "../modals/BorrowBookModal";
 import type { IBook } from "../interface/IBook";
+import { FaBook, FaEdit } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
+import { RiTakeawayFill } from "react-icons/ri";
 
 function BookGrid() {
   const { data: books, isLoading, refetch } = useGetAllBooksQuery(undefined);
@@ -63,8 +66,8 @@ function BookGrid() {
   return (
     <div className="p-4 sm:p-6 lg:p-10 container mx-auto">
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6">
-        <h2 className="text-2xl w-full text-center font-bold text-gray-800 dark:text-white mb-4 sm:mb-0">
-          📚 Book Management
+        <h2 className="text-2xl w-full text-center font-bold text-blue-600 dark:text-white mb-4 sm:mb-0 flex items-center justify-center gap-2">
+       <FaBook />  Book Management
         </h2>
         {/* <button
           onClick={() => navigate("/create-book")}
@@ -102,19 +105,20 @@ function BookGrid() {
                   onClick={() => openEditModal(book)}
                   className="px-3 py-1 text-sm bg-yellow-400 text-white rounded hover:bg-yellow-500"
                 >
-                  ✏️ Edit
+                  <FaEdit title="edit" className="text-lg"/>
                 </button>
                 <button
                   onClick={() => openBorrowModal(book)}
                   className="px-3 py-1 text-sm bg-indigo-500 text-white rounded hover:bg-indigo-600"
                 >
-                  🔄 Borrow
+                  <RiTakeawayFill title="borrow" className="text-lg"/>
+
                 </button>
                 <button
                   onClick={() => handleDelete(book._id)}
                   className="px-3 py-1 text-sm bg-red-500 text-white rounded hover:bg-red-600"
                 >
-                  🗑️ Delete
+                  <MdDelete title="delete" className="text-lg"/>
                 </button>
               </div>
             </div>

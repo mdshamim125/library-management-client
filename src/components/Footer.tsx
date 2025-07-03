@@ -1,3 +1,4 @@
+import { FaBook } from "react-icons/fa";
 import { Link } from "react-router";
 
 const Footer = () => {
@@ -10,9 +11,9 @@ const Footer = () => {
               <div className="px-6">
                 <Link
                   to="/"
-                  className="text-xl font-bold text-blue-600 dark:text-white"
+                  className="text-xl flex items-center gap-2 font-bold text-blue-600 dark:text-white"
                 >
-                  📚 Library Management
+                 <FaBook/> Library Management
                 </Link>
                 <p className="max-w-sm mt-2 text-gray-500 dark:text-gray-400">
                   Join 31,000+ other and never miss out on new tips, tutorials,

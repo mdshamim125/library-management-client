@@ -11,6 +11,7 @@ import type { IBook } from "../interface/IBook";
 import { FaBook, FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { RiTakeawayFill } from "react-icons/ri";
+import Loader from "./Loader";
 
 function BookGrid() {
   const { data: books, isLoading, refetch } = useGetAllBooksQuery(undefined);
@@ -59,7 +60,7 @@ function BookGrid() {
   };
 
   if (isLoading)
-    return <p className="text-center text-gray-500 py-10">Loading books...</p>;
+    return <Loader/>
 
   const bookList = books?.data || [];
 

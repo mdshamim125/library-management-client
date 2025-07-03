@@ -11,6 +11,8 @@ import type { IBook } from "../interface/IBook";
 import { FaBook, FaEdit } from 'react-icons/fa';
 import { MdAddBox, MdDelete } from "react-icons/md";
 import { RiTakeawayFill } from "react-icons/ri";
+import { ScaleLoader } from "react-spinners";
+import Loader from "./Loader";
 
 function BookList() {
   const { data: books, isLoading } = useGetAllBooksQuery(undefined);
@@ -59,7 +61,7 @@ function BookList() {
   };
 
   if (isLoading)
-    return <p className="text-center text-gray-500 py-10">Loading books...</p>;
+    return <Loader/>
 
   const bookList = books?.data || [];
 

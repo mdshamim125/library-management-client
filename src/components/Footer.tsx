@@ -13,12 +13,15 @@ const Footer = () => {
                   to="/"
                   className="text-xl flex items-center gap-2 font-bold text-blue-600 dark:text-white"
                 >
-                 <FaBook/> Library Management
+                  <FaBook /> Library Management
                 </Link>
                 <p className="max-w-sm mt-2 text-gray-500 dark:text-gray-400">
-                  Join 31,000+ other and never miss out on new tips, tutorials,
-                  and more.
+                  A full-stack Library Management System built with React,
+                  Redux, Express.js, and MongoDB — designed to manage books,
+                  borrowers, summaries, and streamline library operations
+                  efficiently.
                 </p>
+
                 <div className="flex mt-6 -mx-2">
                   <a
                     href="#"

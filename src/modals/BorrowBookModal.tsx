@@ -15,7 +15,7 @@ export const BorrowBookModal: React.FC<BorrowBookModalProps> = ({
 }) => {
   const [quantity, setQuantity] = useState(1);
   const [dueDate, setDueDate] = useState("");
-  const [createBorrow] = useCreateBorrowMutation(); // mutation hook
+  const [createBorrow] = useCreateBorrowMutation(); 
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -46,7 +46,7 @@ export const BorrowBookModal: React.FC<BorrowBookModalProps> = ({
       });
 
       onClose();
-      navigate("/borrow-summary"); // redirect
+      navigate("/borrow-summary"); 
     } catch {
       Swal.fire({
         icon: "error",

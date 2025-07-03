@@ -1,13 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import type { IBook } from "../../../interface/IBook";
+import type { IModalSlice } from "../../../interface/IModalSlice";
 
-export interface ModalSlice {
-  isEditModalOpen: boolean;
-  isBorrowModalOpen: boolean;
-  selectedBook: IBook | null;
-}
 
-const initialState: ModalSlice = {
+
+const initialState: IModalSlice = {
   isEditModalOpen: false,
   isBorrowModalOpen: false,
   selectedBook: null,

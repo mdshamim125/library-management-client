@@ -17,17 +17,14 @@ export const EditBookModal: React.FC<EditBookModalProps> = ({
   const [title, setTitle] = useState(book.title);
   const [author, setAuthor] = useState(book.author);
   const [genre, setGenre] = useState<IBook["genre"]>(book.genre);
-  const [isbn] = useState(book.isbn); // assuming ISBN is not editable
+  const [isbn] = useState(book.isbn); 
   const [description, setDescription] = useState(book.description || "");
   const [copies, setCopies] = useState(book.copies);
   const [available, setAvailable] = useState(book.available);
   const [updateBook] = useUpdateBookMutation();
 
-  //   const [publishedYear, setPublishedYear] = useState(book.publishedYear);
-  // console.log(book);
-  // Business logic: copies affects availability
   const handleCopiesChange = (value: number) => {
-    if (value < 0) return; // prevent negative
+    if (value < 0) return; 
     setCopies(value);
     setAvailable(value > 0);
   };
@@ -56,7 +53,7 @@ export const EditBookModal: React.FC<EditBookModalProps> = ({
         showConfirmButton: false,
       });
 
-      onSaved(); // close modal and refresh data
+      onSaved(); 
     } catch (error) {
       console.error("Failed to update book:", error);
 

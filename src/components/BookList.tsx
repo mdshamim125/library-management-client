@@ -31,27 +31,6 @@ function BookList() {
   );
   const dispatch = useAppDispatch();
 
-  // const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-  // const [selectedBook, setSelectedBook] = useState<IBook | null>(null);
-  // const [isBorrowModalOpen, setIsBorrowModalOpen] = useState(false);
-
-  // const openEditModal = (book: IBook) => {
-  //   dispatch(openEditModal(book));
-  //   // setSelectedBook(book);
-  //   // setIsEditModalOpen(true);
-  // };
-
-  // const closeEditModals = () => {
-  //   dispatch(closeEditModal())
-  //   // setSelectedBook(null);
-  //   // setIsEditModalOpen(false);
-  // };
-
-  // const openBorrowModal = (book: IBook) => {
-  //   // setSelectedBook(book);
-  //   // setIsBorrowModalOpen(true);
-  // };
-
   const handleDelete = async (id: string) => {
     const result = await Swal.fire({
       title: "Are you sure?",
@@ -155,7 +134,7 @@ function BookList() {
       {isEditModalOpen && selectedBook && (
         <EditBookModal
           book={selectedBook}
-          onClose={closeEditModal}
+          onClose={()=>dispatch(closeEditModal())}
           onSaved={() => {
             dispatch(closeEditModal());
             // refetch if you have a refetch function or update your UI accordingly

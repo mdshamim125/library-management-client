@@ -11,7 +11,6 @@ import type { IBook } from "../interface/IBook";
 import { FaBook, FaEdit } from 'react-icons/fa';
 import { MdAddBox, MdDelete } from "react-icons/md";
 import { RiTakeawayFill } from "react-icons/ri";
-import { ScaleLoader } from "react-spinners";
 import Loader from "./Loader";
 
 function BookList() {

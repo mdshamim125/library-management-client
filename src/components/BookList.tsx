@@ -5,13 +5,20 @@ import {
 } from "../redux/api/libraryApi";
 import Swal from "sweetalert2";
 import { EditBookModal } from "../modals/EditBookModal";
-import { useState } from "react";
+// import { useState } from "react";
 import { BorrowBookModal } from "../modals/BorrowBookModal";
 import type { IBook } from "../interface/IBook";
-import { FaBook, FaEdit } from 'react-icons/fa';
+import { FaBook, FaEdit } from "react-icons/fa";
 import { MdAddBox, MdDelete } from "react-icons/md";
 import { RiTakeawayFill } from "react-icons/ri";
 import Loader from "./Loader";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import {
+  openEditModal,
+  closeEditModal,
+  openBorrowModal,
+  closeBorrowModal,
+} from "../redux/features/modal/modalSlice";
 
 function BookList() {
   const { data: books, isLoading } = useGetAllBooksQuery(undefined);
@@ -19,24 +26,31 @@ function BookList() {
   const [deleteBook] = useDeleteBookMutation();
   const navigate = useNavigate();
 
-  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-  const [selectedBook, setSelectedBook] = useState<IBook | null>(null);
-  const [isBorrowModalOpen, setIsBorrowModalOpen] = useState(false);
+  const { isEditModalOpen, selectedBook, isBorrowModalOpen } = useAppSelector(
+    (state) => state.modal
+  );
+  const dispatch = useAppDispatch();
 
-  const openEditModal = (book: IBook) => {
-    setSelectedBook(book);
-    setIsEditModalOpen(true);
-  };
+  // const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  // const [selectedBook, setSelectedBook] = useState<IBook | null>(null);
+  // const [isBorrowModalOpen, setIsBorrowModalOpen] = useState(false);
 
-  const closeEditModal = () => {
-    setSelectedBook(null);
-    setIsEditModalOpen(false);
-  };
+  // const openEditModal = (book: IBook) => {
+  //   dispatch(openEditModal(book));
+  //   // setSelectedBook(book);
+  //   // setIsEditModalOpen(true);
+  // };
 
-  const openBorrowModal = (book: IBook) => {
-    setSelectedBook(book);
-    setIsBorrowModalOpen(true);
-  };
+  // const closeEditModals = () => {
+  //   dispatch(closeEditModal())
+  //   // setSelectedBook(null);
+  //   // setIsEditModalOpen(false);
+  // };
+
+  // const openBorrowModal = (book: IBook) => {
+  //   // setSelectedBook(book);
+  //   // setIsBorrowModalOpen(true);
+  // };
 
   const handleDelete = async (id: string) => {
     const result = await Swal.fire({
@@ -59,8 +73,7 @@ function BookList() {
     }
   };
 
-  if (isLoading)
-    return <Loader/>
+  if (isLoading) return <Loader />;
 
   const bookList = books?.data || [];
 
@@ -68,7 +81,8 @@ function BookList() {
     <div className="p-4 sm:p-6 lg:p-10">
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6">
         <h2 className="text-2xl font-bold text-blue-600 dark:text-white mb-4 sm:mb-0 flex items-center justify-center gap-2">
-          <FaBook />Book List
+          <FaBook />
+          Book List
         </h2>
         <button
           onClick={() => navigate("/create-book")}
@@ -113,7 +127,7 @@ function BookList() {
                   </td>
                   <td className="px-4 py-3 flex flex-wrap gap-2">
                     <button
-                      onClick={() => openEditModal(book)}
+                      onClick={() => dispatch(openEditModal(book))}
                       className="px-3 py-1 bg-yellow-400 text-white rounded hover:bg-yellow-500 transition"
                     >
                       <FaEdit title="edit" className="text-lg" />
@@ -126,10 +140,10 @@ function BookList() {
                       <MdDelete title="delete" className="text-lg" />
                     </button>
                     <button
-                      onClick={() => openBorrowModal(book)}
+                      onClick={() => dispatch(openBorrowModal(book))}
                       className="px-3 py-1 bg-indigo-500 text-white rounded hover:bg-indigo-600 transition"
                     >
-                      <RiTakeawayFill title="borrow" className="text-lg"/>
+                      <RiTakeawayFill title="borrow" className="text-lg" />
                     </button>
                   </td>
                 </tr>
@@ -143,7 +157,7 @@ function BookList() {
           book={selectedBook}
           onClose={closeEditModal}
           onSaved={() => {
-            closeEditModal();
+            dispatch(closeEditModal());
             // refetch if you have a refetch function or update your UI accordingly
           }}
         />
@@ -151,7 +165,7 @@ function BookList() {
       {isBorrowModalOpen && selectedBook && (
         <BorrowBookModal
           book={selectedBook}
-          onClose={() => setIsBorrowModalOpen(false)}
+          onClose={() => dispatch(closeBorrowModal())}
         />
       )}
     </div>

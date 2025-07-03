@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { libraryApi } from "./api/libraryApi";
+import { modalSlice } from "./features/modal/modalSlice";
 
 export const store = configureStore({
   reducer: {
+    modal: modalSlice.reducer,
     [libraryApi.reducerPath]: libraryApi.reducer,
   },
   middleware: (getDefaultMiddleware) => {

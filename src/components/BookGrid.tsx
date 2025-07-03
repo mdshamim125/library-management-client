@@ -68,7 +68,7 @@ function BookGrid() {
     <div className="p-4 sm:p-6 lg:p-10 container mx-auto">
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6">
         <h2 className="text-2xl w-full text-center font-bold text-blue-600 dark:text-white mb-4 sm:mb-0 flex items-center justify-center gap-2">
-       <FaBook />  Book Management
+       <FaBook />  Book Collections
         </h2>
         {/* <button
           onClick={() => navigate("/create-book")}

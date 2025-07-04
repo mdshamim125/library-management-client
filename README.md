@@ -1,69 +1,107 @@
-# React + TypeScript + Vite
+## 📚 [Library Management System](https://library-management-client-ochre.vercel.app)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-featured Library Management System built using **React**, **TypeScript**, **Redux Toolkit**, **RTK Query** and **Tailwind CSS**. This application allows users to view, add, edit, delete, and borrow books.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- 📖 View list of books 
+- ➕ Add new books
+- ✏️ Edit existing books
+- ❌ Delete books with confirmation
+- 📦 Borrow book functionality with a modal
+- 📊 Borrow summary table
+- 🖥️ Responsive design for all screen sizes
+- ✅ Alerts using SweetAlert2
+- ⚙️ Redux Toolkit for state management
+- ⚛️ TypeScript for type safety
+- 🧾 REST API integration using RTK Query
+- 🔁 Loading indicators using custom loader components
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🛠️ Tech Stack
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+- **React** with Vite
+- **TypeScript**
+- **Redux Toolkit** & **RTK Query**
+- **Tailwind CSS**
+- **SweetAlert2**
+- **React Icons**
+- **React Router DOM**
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+## 📁 Folder Structure
+
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+📦 src
+├── assets/                     
+├── components/                
+│   ├── AddBook.tsx
+│   ├── Banner.tsx
+│   ├── BookGrid.tsx
+│   ├── BookList.tsx
+│   ├── Footer.tsx
+│   ├── Loader.tsx
+│   ├── Navbar.tsx
+│   └── Testimonial.tsx
+├── interface/                
+│   ├── IBook.ts
+│   ├── IBorrowSummary.ts
+│   └── IModalSlice.ts
+├── layouts/                  
+│   └── MainLayouts.tsx
+├── modals/                   
+│   ├── BorrowBookModal.tsx
+│   └── EditBookModal.tsx
+├── pages/                     
+│   ├── AllBooks.tsx
+│   ├── BorrowSummary.tsx
+│   └── Home.tsx
+├── redux/                    
+│   ├── api/
+│   │   └── libraryApi.ts       
+│   └── features/modal/
+│       ├── modalSlice.ts
+│       ├── hooks.ts
+│       └── store.ts
+├── routes/
+│   ├── index.tsx               
+│   └── index.css              
+└── index.tsx                  
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+````
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+## 🔧 Installation
+
+1. **Clone the Repository**
+
+```bash
+git clone https://github.com/mdshamim125/library-management-client.git
+cd library-management-client
+````
+
+2. **Install Dependencies**
+
+```bash
+npm install
+```
+
+3. **Start the Development Server**
+
+```bash
+npm run dev
+```
+
+---
+
+## 🧱 Build for Production
+
+```bash
+npm run build
 ```
